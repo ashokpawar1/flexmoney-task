@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" th:href="@{/css/style.css}" />
+	<title>Yoga Class</title>
+</head>
+
+<body>
+
+
+	<header class="header">
+		<div class="container">
+			<h1>Welcome to Energetic Life  yoga</h1>
+		</div>
+	</header>
+
+	<nav class="navbar">
+		<div class="container">
+			<ul class="nav-list">
+				<li><a href="/" th:href="@{/}" class="nav-link">Home</a></li>
+				<li><a href="/about" th:href="@{/about}" class="nav-link">About</a></li>
+				<li><a href="/payment" th:href="@{/renew}" class="nav-link">Renew your admission</a></li>
+				<li><a th:href="@{/enrollment}" class="nav-link">New User Registration</a>
+				<li><a href="/registration" th:href="@{/registration}" class="nav-link">Login</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+
+	<div class="container main-content">
+
+		<div class="aboutclass">
+			<h2>About the yoga class</h2>
+			<p>
+				Welcome to our Yoga Classes! At <b>"Energetic Life"</b> , we are committed to fostering a harmonious
+				balance between mind, body, and spirit. Our experienced and certified instructors guide participants of
+				all levels through a transformative journey of self-discovery and well-being.
+
+				Discover the art of yoga in a serene and welcoming environment. Our classes cater to individuals of all
+				ages and fitness levels, offering a diverse range of practices from Hatha and Vinyasa to meditation and
+				mindfulness. Whether you're a beginner or an experienced yogi, our classes are designed to enhance
+				flexibility, strength, and inner peace.
+
+				Join our community and embark on a path to holistic wellness. Embrace the transformative power of yoga
+				and cultivate a healthier, happier lifestyle. We look forward to guiding you on your yoga journey at
+				<b>"Energetic Life"</b>.
+
+
+			</p>
+		</div>
+		<div class="abouttrainers">
+			<h2>Our trainers</h2>
+			<div class="images">
+				<img src="/images/profile.png" alt="trainer1" style=" margin-left: 60px;" />
+				<img src="/images/profile.png" alt="trainer2" style="margin-left: 89px;" />
+			</div>
+		</div>
+	</div>
+
+	
+	<footer class="footer">
+		<div class="container" id="footer">
+			<p>contact us at</p>
+			<div class="social-media-links">
+				<a href="#" target="_blank" class="social-link">Instagram</a>
+				<a href="#" target="_blank" class="social-link">Facebook</a>
+				<a href="#" target="_blank" class="social-link">YouTube</a>
+			</div>
+		</div>
+	</footer>
+
+</body>
+
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" th:href="@{/css/admission.css}" />
+	<title>Admission Form</title>
+</head>
+
+<body>
+
+	<div class="container">
+		<div class="form-container">
+			<h2>Admission Form</h2>
+			<form id="enrollmentForm" th:action="@{/saveuser}" method="post" onsubmit="return validateAge()">
+				<div class="form-group">
+					<label for="name">Name:</label>
+					<input type="text" class="form-control" id="name" name="name" required>
+				</div>
+				<div class="form-group">
+					<label for="name">username:</label>
+					<input type="text" class="form-control" id="username" name="username" required>
+				</div>
+				<div class="form-group">
+					<label for="age">Age:</label>
+					<input type="number" class="form-control" id="age" name="age" required>
+				</div>
+				<div class="form-group">
+					<label for="selectedBatch">Select Batch:</label>
+					<select class="form-control" id="selectedBatch" name="selectedBatch" required>
+						<option value="6-7AM">6-7AM</option>
+						<option value="7-8AM">7-8AM</option>
+						<option value="8-9AM">8-9AM</option>
+						<option value="5-6PM">5-6PM</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="joiningDate">Joining Date:</label>
+					<input type="date" class="form-control" id="joiningDate" name="joiningDate" required>
+				</div>
+				<div class="form-group">
+					<img th:src="@{/images/QR.jpg}" alt="QR Code" class="qr-code-image" style="width: 140px;">
+				</div>
+				<div class="form-group">
+					<label for="utrNumber">UTR Number:</label>
+					<input type="text" class="form-control" id="utrNumber" name="utrNumber" required>
+				</div>
+				<!-- Add other required fields for payment details -->
+
+				<button type="submit" class="btn">Enroll</button>
+			</form>
+		</div>
+	</div>
+
+	<script>
+		function validateAge() {
+			var ageInput = document.getElementById('age');
+			var age = parseInt(ageInput.value);
+
+			if (isNaN(age) || age < 18 || age > 65) {
+				alert('Age must be between 18 and 65.');
+				return false;
+			} else {
+				return true;
+			}
+		}
+	</script>
+
+</body>
+
+</html>

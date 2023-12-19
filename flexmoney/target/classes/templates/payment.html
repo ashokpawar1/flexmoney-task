@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" th:href="@{css/payment.css}" />
+	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+	<title>Payment Page</title>
+</head>
+
+<body>
+
+	<div class="container">
+		<div class="payment-container">
+			<h2 style="margin-top: 20px;">Make a Payment of Rupees 500</h2>
+			<h2>It will renew your admission for the next month</h2>
+
+			<div class="result-container">
+				<!-- Display the result of the search here -->
+			</div>
+
+			<div class="invisible">
+
+
+				<form method="get" id="paymentForm">
+
+					<div class="finduser">
+						<label for="username" style="margin-top: 50px;">Enter Username</label>
+						<input type="text" id="username" name="username" />
+					</div>
+
+					<div class="finduser">
+						<label for="joiningDate" style="margin-top: 20px;">Joining Date:</label>
+						<input type="date" class="form-control" id="joiningDate" name="joiningDate" required>
+					</div>
+
+					<div class="finduser">
+						<label for="selectedBatch" style="margin-top: 20px;">Select Batch:</label>
+						<select style="width: 400px; height: 35px;" class="form-control" id="selectedBatch" name="selectedBatch" required>
+							<option value="6-7AM">6-7AM</option>
+							<option value="7-8AM">7-8AM</option>
+							<option value="8-9AM">8-9AM</option>
+							<option value="5-6PM">5-6PM</option>
+						</select>
+					</div>
+					
+					<img style="margin-top: 20px;" th:src="@{/images/QR.jpg}" alt="QR Code" class="qr-code-image">
+					<div class="form-group">
+						<label for="utrNumber">UTR Number:</label>
+						<input type="text" class="form-control" id="utrNumber" name="utrNumber" required>
+					</div>
+
+					<button type="submit" class="btn" onclick="updateUserData()">Submit Payment</button>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		function updateUserData() {
+			var username = $("#username").val();
+			var utr = $("#utrNumber").val();
+
+			$.ajax({
+				type: "PUT",
+				url: "/renewdata/" + username,
+				data: {
+					utr: utr
+				},
+				contentType: "application/x-www-form-urlencoded",
+				success: function (response) {
+					$("#message").html("<div >user data updated successfully.</div>");
+					window.location.href = "/home";
+				},
+				error: function (xhr, status, error) {
+					var errorMessage = "";
+					if (xhr.status === 0) {
+						errorMessage = "Network error: Unable to connect to the server.";
+					} else {
+						errorMessage = "Error updating appointment: " + xhr.statusText;
+					}
+
+					$("#message").html("<div class='alert alert-danger'>" + errorMessage + "</div>");
+				}
+			});
+		}
+	</script>
+
+</body>
+
+</html>
